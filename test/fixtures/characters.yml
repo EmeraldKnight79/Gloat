@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: characters
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  api_id     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_characters_on_name  (name)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  api_id: MyString
+
+two:
+  name: MyString
+  api_id: MyString
