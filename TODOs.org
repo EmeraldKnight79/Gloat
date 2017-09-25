@@ -1,0 +1,9 @@
+* TODO allow user to create a new "ganking session"
+** TODO this session is basically just a container that has the username and dates
+** TODO once the session ends, tally up all the kills that the user was a part of
+** TODO save them to a record in the DB
+** TODO display the items taken, and the people who were involved with the kills
+* TODO search by username and timeframe to get all kills
+** TODO show all loot gained
+** TODO show all involved members broken out by loot earned
+** TODO try to figure out trashed loot if possible - NOT POSSIBLE
