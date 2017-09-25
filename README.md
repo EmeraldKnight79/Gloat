@@ -1,24 +1,28 @@
-# README
+# GLOAT
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A tool used to keep track of the loot that you and your party earn while ganking in Albion Online
 
-Things you may want to cover:
+## API usage
 
-* Ruby version
+I leverage the "public" API for Albion that powers their kill tracker UI.
 
-* System dependencies
+I do store your character's API ID but, from what I can see, it is not possible to use this value to harm another user in any way. The API is strictly read-only.
 
-* Configuration
+## Getting Started
 
-* Database creation
+```
+git clone git@github.com:KMontag42/gloat.git
+bundle install
+rails db:create db:migrate
+rails s
+```
 
-* Database initialization
+## Tests
 
-* How to run the test suite
+```
+rails test
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
-
-* ...
+Fork this repo and make a PR, I am pretty active on github.

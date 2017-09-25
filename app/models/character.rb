@@ -26,8 +26,9 @@ class Character < ApplicationRecord
 
   def set_api_id
     # in here we need to use some shit from the api to get the ID
-    api_client = AlbionApi::UserSearch.new(self.name)
-    response = api_client.api_id
-    self.api_id = JSON.parse(response.body)
+    # something like this
+    # api_client = AlbionApi::UserSearch.new(self.name)
+    # response = api_client.api_id
+    # self.api_id = JSON.parse(response.body)
   end
 end

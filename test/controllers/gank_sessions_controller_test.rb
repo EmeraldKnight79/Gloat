@@ -17,7 +17,7 @@ class GankSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create gank_session" do
     assert_difference('GankSession.count') do
-      post gank_sessions_url, params: { gank_session: {  } }
+      post gank_sessions_url, params: { gank_session: { character_name: 'test' } }
     end
 
     assert_redirected_to gank_session_url(GankSession.last)
@@ -34,7 +34,7 @@ class GankSessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update gank_session" do
-    patch gank_session_url(@gank_session), params: { gank_session: {  } }
+    patch gank_session_url(@gank_session), params: { gank_session: { character_name: 'test2' } }
     assert_redirected_to gank_session_url(@gank_session)
   end
 
