@@ -63,18 +63,6 @@
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <% @gank_session.items_dropped.each do |item| %>
-      <div class="col-sm-4 col-md-3 border">
-        <div>
-          <%= image_tag item_icon(item['type'], item['quantity']),
-          class: 'img-fluid',
-            style: 'min-height: 150px' %>
-        </div>
-        <h4 class="text-center"><%= item['quantity'] %></h4>
-      </div>
-    <% end %>
-  </div>
 <% end %>
 
 <%= link_to 'Edit', edit_gank_session_path(@gank_session) %> |
