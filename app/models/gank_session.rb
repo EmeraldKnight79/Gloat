@@ -26,16 +26,18 @@ class GankSession < ApplicationRecord
 
   def end_session
     self.end_time ||= Time.now
-    record_items_dropped unless self.changed.empty?
+    extract_response_values unless self.changed.empty?
   end
 
-  def record_items_dropped
+  def extract_response_values
     items_dropped = []
+    players_killed = []
     characters.each do |character|
       client = AlbionApi::UserKillboard.new(character.api_id)
       response = client.top_kills_in_range(start_time, end_time)
       puts response.items_dropped
       items_dropped << response.items_dropped
+      players_killed << response.players_killed
     end
     flat_items = items_dropped.flatten
     flat_items = flat_items.group_by do |item|
@@ -48,6 +50,7 @@ class GankSession < ApplicationRecord
       }
     end
     self.items_dropped = grouped_items
+    self.players_killed = players_killed.flatten.uniq
     save!
   end
 

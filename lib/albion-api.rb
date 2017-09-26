@@ -48,6 +48,7 @@ module AlbionApi
     def initialize(response)
       @_group_members = extract_group_members(response)
       @_items_dropped = extract_dropped_items(response)
+      @_players_killed = extract_players_killed(response)
     end
 
     def group_members
@@ -58,9 +59,13 @@ module AlbionApi
       _items_dropped
     end
 
+    def players_killed
+      _players_killed
+    end
+
     private
 
-    attr_accessor :_group_members, :_items_dropped
+    attr_accessor :_group_members, :_items_dropped, :_players_killed
 
     def extract_group_members(response)
       response.collect { |kill| kill['GroupMembers'] }.flatten.collect do |member|
@@ -71,6 +76,12 @@ module AlbionApi
     def extract_dropped_items(response)
       response.collect { |kill| kill['Victim'] }.flatten.collect do |victim|
         victim['Inventory'].compact
+      end
+    end
+
+    def extract_players_killed(response)
+      response.collect { |kill| kill['Victim'] }.flatten.collect do |victim|
+        victim['Name']
       end
     end
   end

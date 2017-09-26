@@ -29,18 +29,27 @@
   </div>
 <% end %>
 
-<% if @gank_session.items_dropped %>
-<h2>Items Dropped</h2>
-<table class="table table-striped">
-  <tbody>
-    <% @gank_session.items_dropped.each do |item| %>
-      <tr>
-        <td><%= item['type'] %></td>
-        <td><%= item['quantity'] %></td>
-      </tr>
+<% if @gank_session.players_killed %>
+  <h2>Players Killed</h2>
+  <ul>
+    <% @gank_session.players_killed.each do |pk| %>
+      <li><%= pk %></li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+<% end %>
+
+<% if @gank_session.items_dropped %>
+  <h2>Items Dropped</h2>
+  <table class="table table-striped">
+    <tbody>
+      <% @gank_session.items_dropped.each do |item| %>
+        <tr>
+          <td><%= item['type'] %></td>
+          <td><%= item['quantity'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <%= link_to 'Edit', edit_gank_session_path(@gank_session) %> |
