@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>AlbionGankingLootTracker</title>
     <%= csrf_meta_tags %>
 
@@ -9,6 +13,19 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-inverse" style="background-color: #e3f2fd;">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <%= link_to 'Home', '/', class: 'navbar-brand' %>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <%= link_to 'Sessions', gank_sessions_path, class: 'nav-item nav-link' %>
+          <%= link_to 'Characters', characters_path, class: 'nav-item nav-link' %>
+        </div>
+      </div>
+    </nav>
+    <br/>
     <div class="container">
       <%= yield %>
     </div>

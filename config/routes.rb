@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+
   resources :characters
   resources :gank_sessions do
     post :end, to: 'gank_sessions#end', as: 'end'
