@@ -42,26 +42,14 @@
   <% items_dropped_half_length = @gank_session.items_dropped.length / 2 %>
   <h2>Items Dropped</h2>
   <div class="row">
-    <table class="table-sm table-striped col-sm-6">
-      <tbody>
-        <% @gank_session.items_dropped.slice(0, items_dropped_half_length).each do |item| %>
-          <tr>
-            <td><%= image_tag item_icon(item['type'], item['quantity']), height: 42 %></td>
-            <td><%= item['quantity'] %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <table class="table-sm table-striped col-sm-6">
-      <tbody>
-        <% @gank_session.items_dropped.slice(items_dropped_half_length, @gank_session.items_dropped.length).each do |item| %>
-          <tr>
-            <td><%= image_tag item_icon(item['type'], item['quantity']), height: 42 %></td>
-            <td><%= item['quantity'] %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% @gank_session.items_dropped.each do |item| %>
+      <div class="col-4 col-sm-3 col-md-2 col-xl-1 border">
+        <div>
+          <%= image_tag item_icon(item['type'], item['quantity']), class: 'img-fluid' %>
+        </div>
+        <h4 class="text-center"><%= item['quantity'] %></h4>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
