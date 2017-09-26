@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: gank_session_characters
+#
+#  id              :integer          not null, primary key
+#  gank_session_id :integer
+#  character_id    :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_gank_session_characters_on_character_id     (character_id)
+#  index_gank_session_characters_on_gank_session_id  (gank_session_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gank_session_id: 1
+  character_id: 1
+
+two:
+  gank_session_id: 1
+  character_id: 1

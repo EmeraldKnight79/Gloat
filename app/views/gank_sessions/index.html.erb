@@ -5,7 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Character Name</th>
+      <th>Characters</th>
       <th>Start Time</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +14,7 @@
   <tbody>
     <% @gank_sessions.each do |gank_session| %>
       <tr>
-        <td><%= gank_session.character.name %></td>
+        <td><%= gank_session.characters.collect(&:name).join("<br/>").html_safe %></td>
         <td><%= gank_session.start_time %></td>
         <td><%= link_to 'Show', gank_session %></td>
         <td><%= link_to 'Edit', edit_gank_session_path(gank_session) %></td>

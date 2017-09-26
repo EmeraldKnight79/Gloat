@@ -12,7 +12,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.select :character_id, Character.all.collect {|x| [x.name, x.id] } %>
+      <%= form.select :character_id,
+      Character.select_options,
+      {include_hidden: false, include_blank: false},
+      {
+        multiple: true,
+        class: 'form-control',
+        name: 'gank_session[gank_session_characters_attributes][][character_id]'
+      } %>
   </div>
 
   <div class="actions">

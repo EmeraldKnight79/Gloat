@@ -20,7 +20,14 @@ require "#{Rails.root}/lib/albion-api.rb"
 class Character < ApplicationRecord
   before_create :set_api_id
 
-  has_many :gank_sessions
+  has_many :gank_session_characters
+  has_many :gank_sessoions, through: :gank_session_characters
+
+  def self.select_options
+    all.collect do |character|
+      [character.name, character.id]
+    end
+  end
 
   private
 

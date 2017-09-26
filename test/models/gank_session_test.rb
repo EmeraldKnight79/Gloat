@@ -2,12 +2,11 @@
 #
 # Table name: gank_sessions
 #
-#  id           :integer          not null, primary key
-#  start_time   :datetime
-#  end_time     :datetime
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  character_id :integer
+#  id         :integer          not null, primary key
+#  start_time :datetime
+#  end_time   :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
