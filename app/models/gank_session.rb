@@ -26,27 +26,29 @@ class GankSession < ApplicationRecord
 
   def end_session
     self.end_time ||= Time.now
-    unless self.changed.empty?
-      items_dropped = []
-      characters.each do |character|
-        client = AlbionApi::UserKillboard.new(character.api_id)
-        response = client.top_kills_in_range(start_time, end_time)
-        puts response.items_dropped
-        items_dropped << response.items_dropped
-      end
-      flat_items = items_dropped.flatten
-      flat_items = flat_items.group_by do |item|
-        item['Type']
-      end
-      grouped_items = flat_items.map do |type, items|
-        {
-          type: type,
-          quantity: items.reduce(0) { |sum, item| sum + item['Count'] }
-        }
-      end
-      self.items_dropped = grouped_items
-      save!
+    record_items_dropped unless self.changed.empty?
+  end
+
+  def record_items_dropped
+    items_dropped = []
+    characters.each do |character|
+      client = AlbionApi::UserKillboard.new(character.api_id)
+      response = client.top_kills_in_range(start_time, end_time)
+      puts response.items_dropped
+      items_dropped << response.items_dropped
     end
+    flat_items = items_dropped.flatten
+    flat_items = flat_items.group_by do |item|
+      item['Type']
+    end
+    grouped_items = flat_items.map do |type, items|
+      {
+        type: type,
+        quantity: items.reduce(0) { |sum, item| sum + item['Count'] }
+      }
+    end
+    self.items_dropped = grouped_items
+    save!
   end
 
   private
