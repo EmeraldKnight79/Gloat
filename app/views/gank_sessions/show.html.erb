@@ -7,7 +7,7 @@
   </div>
 <% end %>
 
-<h1><%= @gank_session.character_name %></h1>
+<h1><%= @gank_session.character.name %></h1>
 <h3><%= @gank_session.start_time %> - <%= @gank_session.end_time %></h3>
 
 <%= link_to 'Edit', edit_gank_session_path(@gank_session) %> |

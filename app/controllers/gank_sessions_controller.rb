@@ -69,6 +69,6 @@ class GankSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gank_session_params
-      params.require(:gank_session).permit(:character_name)
+      params.require(:gank_session).permit(:character_id)
     end
 end

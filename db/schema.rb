@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925213323) do
+ActiveRecord::Schema.define(version: 20170926124055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,11 @@ ActiveRecord::Schema.define(version: 20170925213323) do
   end
 
   create_table "gank_sessions", force: :cascade do |t|
-    t.string "character_name"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["character_name"], name: "index_gank_sessions_on_character_name"
+    t.integer "character_id"
     t.index ["end_time"], name: "index_gank_sessions_on_end_time"
     t.index ["start_time"], name: "index_gank_sessions_on_start_time"
   end

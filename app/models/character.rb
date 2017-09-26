@@ -15,20 +15,20 @@
 #  index_characters_on_name  (name)
 #
 
-# when being created we also need to get their albion online character name somehow
-# not totally sure how to do this properly yet
-# potentially via a search api?
+require "#{Rails.root}/lib/albion-api.rb"
 
 class Character < ApplicationRecord
   before_create :set_api_id
+
+  has_many :gank_sessions
 
   private
 
   def set_api_id
     # in here we need to use some shit from the api to get the ID
     # something like this
-    # api_client = AlbionApi::UserSearch.new(self.name)
-    # response = api_client.api_id
-    # self.api_id = JSON.parse(response.body)
+    api_client = AlbionApi::UserSearch.new(self.name)
+    response = api_client.find
+    self.api_id = response["players"].first["Id"]
   end
 end
