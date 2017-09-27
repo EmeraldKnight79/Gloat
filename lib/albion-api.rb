@@ -75,10 +75,10 @@ module AlbionApi
 
     def extract_dropped_items(response)
       response.collect { |kill| kill['Victim'] }.flatten.collect do |victim|
-        victim['Inventory'].compact
+        victim['Inventory'].concat(victim['Equipment'].values).compact
       end
     end
-
+    
     def extract_players_killed(response)
       response.collect { |kill| kill['Victim'] }.flatten.collect do |victim|
         victim['Name']
