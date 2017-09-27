@@ -10,13 +10,27 @@
 <h1>Gank Session</h1>
 <h3><%= @gank_session.start_time %> - <%= @gank_session.end_time %></h3>
 
-<h2>Characters</h2>
-<ul>
-  <% @gank_session.characters.each do |character| %>
-    <li><%= character.name %></li>
-  <% end %>
-</ul>
-</ul>
+<div class="row">
+  <div class="col-6">
+    <h2>Characters</h2>
+    <ul>
+      <% @gank_session.characters.each do |character| %>
+        <li><%= character.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-6">
+    <% if @gank_session.players_killed %>
+      <h2>Players Killed</h2>
+      <ul>
+        <% @gank_session.players_killed.each do |pk| %>
+          <li><%= pk %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
 
 <% if @gank_session.end_time.nil? %>
   <div>
@@ -29,14 +43,7 @@
   </div>
 <% end %>
 
-<% if @gank_session.players_killed %>
-  <h2>Players Killed</h2>
-  <ul>
-    <% @gank_session.players_killed.each do |pk| %>
-      <li><%= pk %></li>
-    <% end %>
-  </ul>
-<% end %>
+
 
 <% if @gank_session.items_dropped %>
   <% items_dropped_half_length = @gank_session.items_dropped.length / 2 %>
