@@ -39,17 +39,7 @@ class GankSession < ApplicationRecord
       items_dropped << response.items_dropped
       players_killed << response.players_killed
     end
-    flat_items = items_dropped.flatten
-    flat_items = flat_items.group_by do |item|
-      item['Type']
-    end
-    grouped_items = flat_items.map do |type, items|
-      {
-        type: type,
-        quantity: items.reduce(0) { |sum, item| sum + item['Count'] }
-      }
-    end
-    self.items_dropped = grouped_items
+    self.items_dropped = flatten_and_group_items(items_dropped)
     self.players_killed = players_killed.flatten.uniq
     save!
   end
@@ -58,5 +48,18 @@ class GankSession < ApplicationRecord
 
   def set_start_time
     self.start_time = Time.now
+  end
+
+  def flatten_and_group_items(items_dropped)
+    flat_items = items_dropped.flatten
+    flat_items = flat_items.group_by do |item|
+      item['Type']
+    end
+    flat_items.map do |type, items|
+      {
+        type: type,
+        quantity: items.reduce(0) { |sum, item| sum + item['Count'] }
+      }
+    end
   end
 end

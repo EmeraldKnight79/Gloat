@@ -41,6 +41,12 @@
     data: { confirm: 'Session over?' }
     %>
   </div>
+  <div>
+    <%= link_to 'Update Loot',
+    gank_session_loot_path(@gank_session),
+    method: :post,
+    data: { confirm: 'Update loot?' } %>
+  </div>
 <% end %>
 
 <% if @gank_session.items_dropped %>

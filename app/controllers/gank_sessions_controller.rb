@@ -70,6 +70,14 @@ class GankSessionsController < ApplicationController
     end
   end
 
+  # POST /gank_sessions/1/loot
+  def loot
+    @gank_session.extract_response_values
+    respond_to do |format|
+      format.html { redirect_to @gank_sesion, notice: 'Loot updated!' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gank_session
