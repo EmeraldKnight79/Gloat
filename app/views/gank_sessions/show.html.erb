@@ -7,7 +7,12 @@
   </div>
 <% end %>
 
-<h1>Gank Session</h1>
+<h1>
+  Gank Session
+  <span class="float-right h4">
+    <%= link_to 'Edit', edit_gank_session_path(@gank_session), class: 'btn btn-primary' %>
+  </span>
+</h1>
 <h3><%= @gank_session.start_time %> - <%= @gank_session.end_time %></h3>
 
 <div class="row">
@@ -64,5 +69,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_gank_session_path(@gank_session) %> |
 <%= link_to 'Back', gank_sessions_path %>

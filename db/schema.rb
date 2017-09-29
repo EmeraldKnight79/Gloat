@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926212752) do
+ActiveRecord::Schema.define(version: 20170929180305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170926212752) do
     t.integer "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["character_id", "gank_session_id"], name: "unique_character_per_session_index", unique: true
     t.index ["character_id"], name: "index_gank_session_characters_on_character_id"
     t.index ["gank_session_id"], name: "index_gank_session_characters_on_gank_session_id"
   end
@@ -41,6 +42,23 @@ ActiveRecord::Schema.define(version: 20170926212752) do
     t.json "players_killed", default: []
     t.index ["end_time"], name: "index_gank_sessions_on_end_time"
     t.index ["start_time"], name: "index_gank_sessions_on_start_time"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

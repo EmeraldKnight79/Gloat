@@ -13,7 +13,7 @@
 
   <div class="form-group">
       <%= form.select :character_id,
-      Character.select_options,
+      options_for_select(Character.select_options, gank_session.characters.pluck(:id)),
       {include_hidden: false, include_blank: false},
       {
         multiple: true,
