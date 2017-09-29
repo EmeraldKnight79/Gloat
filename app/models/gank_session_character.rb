@@ -17,4 +17,6 @@
 class GankSessionCharacter < ApplicationRecord
   belongs_to :character
   belongs_to :gank_session
+
+  validates_uniqueness_of :character_id, scope: :gank_session_id
 end
