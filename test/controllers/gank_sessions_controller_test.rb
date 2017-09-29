@@ -58,7 +58,6 @@ class GankSessionsControllerTest < ActionDispatch::IntegrationTest
 
   def create_gank_session
     character = characters(:one)
-    puts character.id
     post gank_sessions_url, params: { gank_session: { gank_session_characters_attributes: { "0" => { character_id: character.id }} } }
   end
 end
