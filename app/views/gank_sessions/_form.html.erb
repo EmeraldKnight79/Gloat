@@ -1,12 +1,14 @@
 <%= form_with(model: gank_session, local: true) do |form| %>
   <% if gank_session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(gank_session.errors.count, "error") %> prohibited this gank_session from being saved:</h2>
+      <h2>
+        <%= pluralize(gank_session.errors.count, "error") %> prevented your changes:
+      </h2>
 
-      <ul>
-      <% gank_session.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <ul class="list-none">
+        <% gank_session.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>

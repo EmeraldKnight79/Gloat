@@ -3,7 +3,7 @@ require 'test_helper'
 class GankSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @gank_session = gank_sessions(:one)
-    @character = characters(:one)
+    @character_two = characters(:two)
   end
 
   test "does get index" do
@@ -42,7 +42,7 @@ class GankSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "does update gank_session" do
     patch gank_session_url(@gank_session, format: :html),
-          params: { gank_session: { gank_session_characters_attributes: { "0" => { character_id: @character.id }} } }
+          params: { gank_session: { gank_session_characters_attributes: { "0" => { character_id: @character_two.id }} } }
     assert_redirected_to gank_session_url(@gank_session)
   end
 
@@ -57,6 +57,8 @@ class GankSessionsControllerTest < ActionDispatch::IntegrationTest
   private
 
   def create_gank_session
-    post gank_sessions_url, params: { gank_session: { gank_session_characters_attributes: { "0" => { character_id: @character.id }} } }
+    character = characters(:one)
+    puts character.id
+    post gank_sessions_url, params: { gank_session: { gank_session_characters_attributes: { "0" => { character_id: character.id }} } }
   end
 end
