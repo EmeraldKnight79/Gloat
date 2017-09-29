@@ -1,5 +1,5 @@
 class GankSessionsController < ApplicationController
-  before_action :set_gank_session, only: [:show, :edit, :update, :destroy, :end]
+  before_action :set_gank_session, only: [:show, :edit, :update, :destroy, :end, :loot]
 
   # GET /gank_sessions
   # GET /gank_sessions.json
@@ -74,7 +74,7 @@ class GankSessionsController < ApplicationController
   def loot
     @gank_session.extract_response_values
     respond_to do |format|
-      format.html { redirect_to @gank_sesion, notice: 'Loot updated!' }
+      format.html { redirect_to @gank_session, notice: 'Loot updated!' }
     end
   end
 

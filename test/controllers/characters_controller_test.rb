@@ -16,6 +16,7 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create character" do
+    AlbionApi::UserSearch.any_instance.stubs(:find).returns({"players"=> [{"Id"=> 1}]})
     assert_difference('Character.count') do
       post characters_url, params: { character: { api_id: @character.api_id, name: @character.name } }
     end
