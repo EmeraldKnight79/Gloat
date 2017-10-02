@@ -20,6 +20,7 @@ class Guild < ApplicationRecord
   has_many :characters
 
   before_validation :set_api_info, on: :create
+  after_create :generate_members
 
   private
 
@@ -30,5 +31,16 @@ class Guild < ApplicationRecord
       name: response.alliance_name,
       api_id: response.alliance_api_id
     ).id
+  end
+
+  def generate_members
+    members_response = AlbionApi::GuildMembers.new(api_id).find
+    members_response.members.each do |member|
+      character = Character.find_or_initialize_by(name: member['Name'])
+      if character.new_record? || character.guild_id != id
+        character.guild_id = id
+        character.save(validate: false)
+      end
+    end
   end
 end

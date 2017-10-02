@@ -16,4 +16,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require multi-select
+//= require jquery.quicksearch
 //= require_tree .
