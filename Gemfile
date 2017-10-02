@@ -31,6 +31,8 @@ gem 'httparty'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 
+gem 'multi-select-rails'
+
 gem 'devise'
 
 # include my albion-api gem!!
