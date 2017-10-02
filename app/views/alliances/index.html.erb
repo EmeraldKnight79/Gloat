@@ -16,8 +16,11 @@
       <tr>
         <td><%= alliance.name %></td>
         <td><%= alliance.api_id %></td>
+        <td>
+          <%= link_to 'Destroy', alliance,
+          method: :delete, data: { confirm: 'Are you sure?' } if can? :manage, Alliance %>
+        </td>
         <td><%= link_to 'Show', alliance %></td>
-        <td><%= link_to 'Destroy', alliance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

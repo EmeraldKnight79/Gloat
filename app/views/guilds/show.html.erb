@@ -12,8 +12,16 @@
 
 <p>
   <strong>Alliance:</strong>
-  <%= @guild.alliance_id %>
+  <%= link_to @guild.alliance.name, @guild.alliance %>
 </p>
 
-<%= link_to 'Edit', edit_guild_path(@guild) %> |
+<p>
+  <strong>Members:</strong>
+  <ul>
+    <% @guild.characters.each do |character| %>
+      <li><%= link_to character.name, character %></li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Back', guilds_path %>

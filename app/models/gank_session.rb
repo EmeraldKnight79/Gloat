@@ -23,6 +23,8 @@ class GankSession < ApplicationRecord
   has_many :gank_session_characters
   has_many :characters, through: :gank_session_characters
 
+  has_many :guilds, through: :characters
+
   accepts_nested_attributes_for :gank_session_characters
 
   def end_session

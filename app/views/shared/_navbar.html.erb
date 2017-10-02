@@ -13,11 +13,22 @@
         <%= link_to 'Characters', characters_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
+        <%= link_to 'Guilds', guilds_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Alliances', alliances_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
         <%= link_to 'Logout',
         destroy_user_session_path,
         method: :delete,
         data: { confirm: "Logout?" },
-        class: 'nav-link' %>
+        class: 'nav-link' if current_user
+        %>
+        <%= link_to 'Log In',
+        new_user_session_path,
+        class: 'nav-link' unless current_user
+        %>
       </li>
     </ul>
   </div>

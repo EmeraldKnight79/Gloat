@@ -7,6 +7,7 @@
 #  api_id     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  guild_id   :integer
 #
 # Indexes
 #

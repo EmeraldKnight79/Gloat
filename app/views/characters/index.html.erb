@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Guild</th>
+      <th>Aliiance</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -14,9 +16,13 @@
     <% @characters.each do |character| %>
       <tr>
         <td><%= character.name %></td>
+        <td><%= character.guild.name if character.guild %></td>
+        <td><%= character.alliance.name if character.alliance %></td>
+        <td>
+          <%= link_to 'Destroy', character,
+          method: :delete, data: { confirm: 'Are you sure?' } if can? :manage, character %>
+        </td>
         <td><%= link_to 'Show', character %></td>
-        <td><%= link_to 'Edit', edit_character_path(character) %></td>
-        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Character', new_character_path %>
+<%= link_to 'New Character', new_character_path if can? :manage, Character %>

@@ -16,9 +16,9 @@
       <tr>
         <td><%= gank_session.characters.collect(&:name).join("<br/>").html_safe %></td>
         <td><%= gank_session.start_time %></td>
+        <td><%= link_to 'Edit', edit_gank_session_path(gank_session) if can? :manage, gank_session %></td>
+        <td><%= link_to 'Destroy', gank_session, method: :delete, data: { confirm: 'Are you sure?' } if can? :manage, gank_session %></td>
         <td><%= link_to 'Show', gank_session %></td>
-        <td><%= link_to 'Edit', edit_gank_session_path(gank_session) %></td>
-        <td><%= link_to 'Destroy', gank_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Gank Session', new_gank_session_path %>
+<%= link_to 'New Gank Session', new_gank_session_path if can? :manage, GankSession %>

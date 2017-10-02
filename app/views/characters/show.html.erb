@@ -10,5 +10,8 @@
   <%= @character.api_id %>
 </p>
 
-<%= link_to 'Edit', edit_character_path(@character) %> |
+<p>
+  <strong>Guild:</strong>
+  <%= link_to @character.guild.name, @character.guild if @character.guild %>
+</p>
 <%= link_to 'Back', characters_path %>

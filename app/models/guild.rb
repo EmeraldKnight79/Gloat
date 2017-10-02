@@ -17,8 +17,9 @@ require 'albion-api'
 # this is the model for a guild in Albion
 class Guild < ApplicationRecord
   belongs_to :alliance
+  has_many :characters
 
-  before_create :set_api_info
+  before_validation :set_api_info, on: :create
 
   private
 
@@ -28,6 +29,6 @@ class Guild < ApplicationRecord
     self.alliance_id = Alliance.find_or_create_by(
       name: response.alliance_name,
       api_id: response.alliance_api_id
-    )
+    ).id
   end
 end
