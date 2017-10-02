@@ -40,11 +40,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    albion-api (0.1.0)
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (8.0.0)
-    autoprefixer-rails (7.1.4)
+    autoprefixer-rails (7.1.4.1)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -112,7 +113,7 @@ GEM
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
-    method_source (0.8.2)
+    method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -133,9 +134,9 @@ GEM
     orm_adapter (0.5.0)
     pg (0.21.0)
     popper_js (1.11.1)
-    pry (0.11.0)
+    pry (0.11.1)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+      method_source (~> 0.9.0)
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
@@ -227,6 +228,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  albion-api
   annotate
   bootstrap (~> 4.0.0.beta)
   byebug

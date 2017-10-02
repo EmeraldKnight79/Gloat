@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: guilds
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  api_id      :string
+#  alliance_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  api_id: MyString
+  alliance_id: 1
+
+two:
+  name: MyString
+  api_id: MyString
+  alliance_id: 1

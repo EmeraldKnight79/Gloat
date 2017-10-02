@@ -15,8 +15,9 @@
 #  index_characters_on_name  (name)
 #
 
-require "#{Rails.root}/lib/albion-api.rb"
+require 'albion-api'
 
+# the character model
 class Character < ApplicationRecord
   before_create :set_api_id
 
@@ -36,6 +37,6 @@ class Character < ApplicationRecord
     # something like this
     api_client = AlbionApi::UserSearch.new(self.name)
     response = api_client.find
-    self.api_id = response["players"].first["Id"]
+    self.api_id = response.api_id
   end
 end

@@ -12,6 +12,7 @@
 #
 #  index_gank_session_characters_on_character_id     (character_id)
 #  index_gank_session_characters_on_gank_session_id  (gank_session_id)
+#  unique_character_per_session_index                (character_id,gank_session_id) UNIQUE
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @guild.name %>
+</p>
+
+<p>
+  <strong>Api:</strong>
+  <%= @guild.api_id %>
+</p>
+
+<p>
+  <strong>Alliance:</strong>
+  <%= @guild.alliance_id %>
+</p>
+
+<%= link_to 'Edit', edit_guild_path(@guild) %> |
+<%= link_to 'Back', guilds_path %>
